@@ -4,6 +4,10 @@ option(WITH_OGR "Choose if OGR/GDAL input vector support should be built in" ON)
 add_executable(mapcache_seed mapcache_seed.c)
 target_link_libraries(mapcache_seed mapcache)
 
+add_executable(mapcache_test mapcache_test.c)
+target_link_libraries(mapcache_test mapcache)
+
+
 if(WITH_OGR)
   find_package(GDAL)
   if(GDAL_FOUND)
@@ -28,7 +32,7 @@ if(WITH_GEOS)
   endif(GEOS_FOUND)
 endif (WITH_GEOS)
 
-  
+
 configure_file (
   "${PROJECT_SOURCE_DIR}/util/mapcache-util-config.h.in"
   "${PROJECT_BINARY_DIR}/util/mapcache-util-config.h"
@@ -41,3 +45,4 @@ status_optional_component("GEOS" "${USE_GEOS}" "${GEOS_LIBRARY}")
 status_optional_component("OGR" "${USE_OGR}" "${GDAL_LIBRARY}")
 
 INSTALL(TARGETS mapcache_seed RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+INSTALL(TARGETS mapcache_test RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

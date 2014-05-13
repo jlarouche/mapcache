@@ -279,7 +279,7 @@ status_optional_component("Experimental mapserver support" "${USE_MAPSERVER}" "$
 
 INSTALL(TARGETS mapcache DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-add_subdirectory(util)
 add_subdirectory(cgi)
 add_subdirectory(apache)
+add_subdirectory(util)
 add_subdirectory(nginx)
